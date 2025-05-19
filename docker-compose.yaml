@@ -1,0 +1,69 @@
+services:
+  app:
+    build:
+      context: . 
+      dockerfile: Dockerfile 
+    ports:
+      - "7860:7860"
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=admin123
+      - DATABASE_NAME=CloverDetect
+
+      - SAM2_REPO_ROOT=/app/app/object_detection_and_SAM2/sam2_model_info/sam2
+      - PYTHONPATH=/app:/app/app/object_detection_and_SAM/sam2_model_info/sam2
+      - HYDRA_FULL_ERROR=1
+
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./:/app
+      # Volume mapping - Important Notes:
+      # 1. Volume mapping is fixed at container startup and cannot be dynamically changed through the Web interface.
+      # 2. To change the mounted path, you must modify the configuration in this file and restart the container.
+      # 3. Make sure the directory exists on the host machine.
+      # 4. Choose the appropriate path format based on your operating system.
+      
+      # Windows paths (by default):
+      - C:/CloverData/uploads:/app/uploads
+      - C:/CloverData/outputs:/app/outputs
+      - C:/CloverData/exports_excel:/app/exports_excel
+      
+      # macOS paths (if using macOS, uncomment the following lines and comment out the Windows paths):
+      # - /Users/Shared/CloverData/uploads:/app/uploads
+      # - /Users/Shared/CloverData/outputs:/app/outputs
+      # - /Users/Shared/CloverData/exports_excel:/app/exports_excel
+      
+      # Linux paths (if using Linux, uncomment the following lines and comment out the Windows paths):
+      # - /data/CloverData/uploads:/app/uploads
+      # - /data/CloverData/outputs:/app/outputs
+      # - /data/CloverData/exports_excel:/app/exports_excel
+      
+      # Application logs and outputs
+      - ./app/outputLogs:/app/app/outputLogs
+      - ./app/outputModel:/app/app/outputModel
+      
+      - ./app/object_detection_and_SAM/weights:/app/app/object_detection_and_SAM/weights
+      - ./app/object_detection_and_SAM/sam2_model_info:/app/app/object_detection_and_SAM/sam2_model_info
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: CloverDetect
+    volumes:
+      - clover_data:/var/lib/mysql
+      - ./app/dbFile/schema.sql:/docker-entrypoint-initdb.d/schema.sql #  maps your schema.sql for database initialization
+    healthcheck: 
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-padmin123"]
+      interval: 10s
+      timeout: 20s
+      retries: 10
+    ports:
+      - "3307:3306"  # Maps MySQL port 3306 from container to 3307 on host
+      
+
+volumes:
+  clover_data:

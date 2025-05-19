@@ -1,0 +1,38 @@
+# Core dependencies
+Flask==3.0.3
+mysql-connector-python==8.2.0
+opencv-contrib-python==4.10.0.84
+numpy==1.24.4
+Pillow==10.1.0
+matplotlib==3.9.2
+tqdm==4.67.1
+
+# Image processing dependencies
+scikit-image==0.22.0
+scikit-learn==1.6.1
+scipy==1.15.1
+
+# Deep learning and computer vision (CPU version)
+# torch and torchvision will be installed via a special URL in the Dockerfile (CPU version)
+detectron2 @ git+https://github.com/facebookresearch/detectron2.git@bcfd464d0c810f0442d91a349c0f6df945467143
+fvcore==0.1.5.post20221221
+# Fix version conflicts by using a compatible version with detectron2
+iopath>=0.1.7,<0.1.10
+pycocotools==2.0.8
+shapely==2.0.6
+
+# Utility libraries
+PyYAML==6.0.2
+omegaconf==2.3.0
+hydra-core==1.3.2
+cloudpickle==3.0.0
+tabulate==0.9.0
+termcolor==2.4.0
+yacs==0.1.8
+
+# Data processing
+pandas==2.2.2
+XlsxWriter==3.2.0
+
+# Add tensorboard to prevent automatic installation of the latest version
+tensorboard==2.15.1
