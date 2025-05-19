@@ -92,7 +92,7 @@ The easiest way to run the application is through Docker, which handles all depe
 - Extract all files to a directory on your computer
 
 **Important Note**: If you cannot find the `clover-detect.tar` file, make sure file extensions are visible in your file explorer settings. 
-<img src="app/static/images/show_file_extensions.jpg" alt="Enable File Extensions in Windows Explorer" style="zoom:50%;" />
+<img src="static/images/show_file_extensions.jpg" alt="Enable File Extensions in Windows Explorer" style="zoom:50%;" />
 
 #### Setup and Run
 1. Run Docker Desktop APP
@@ -106,11 +106,11 @@ docker load -i clover-detect.tar
 # Start the application using docker-compose
 docker-compose up -d
 ```
-<img src="app/static/images/setupDocker.jpg" alt="Setup Docker Container" style="zoom:67%;" />
+<img src="static/images/setupDocker.jpg" alt="Setup Docker Container" style="zoom:67%;" />
 
 After the initial setup, you can access the application through typing the address into the browser's navigation bar with: http://localhost:7860 or simply use the Docker Desktop to start or close the container. If you accidentally delete the container, re-enter the above commands to rebuild it. ( It a bit takes time for the web page to first load)
 
-<img src="app/static/images/docker_success.jpg" alt="Setup Docker Container" style="zoom:67%;" />
+<img src="static/images/docker_success.jpg" alt="Setup Docker Container" style="zoom:67%;" />
 
 #### Cleaning Up Docker Resources
 
