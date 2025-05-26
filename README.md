@@ -2,7 +2,7 @@
 
 A web application combining Faster R-CNN for object detection and SAM2 for precise segmentation analysis of clover plots distribution in drone imagery. 
 
-🎥 [Watch the demo on YouTube](https://www.youtube.com/playlist?list=PLQ7eFSb8ydayAsLAkGa-kngCPJ0qU2niU)
+🎥 [Watch the demo on YouTube](https://www.youtube.com/watch?v=aWHe7E47JcM&list=PLQ7eFSb8ydayAsLAkGa-kngCPJ0qU2niU&index=1) 
 
 
 Access the Web Interface： http://localhost:7860 (Ensure your environment is properly configured by following the setup guidelines in the **Installation** section.)
