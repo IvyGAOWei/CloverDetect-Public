@@ -2,6 +2,9 @@
 
 A web-based platform for accurate clover plot detection and coverage analysis using drone images. Powered by a custom Faster R-CNN model (Detectron2) and Segment Anything Model (SAM), this project enables precise object detection and segmentation, with a user-friendly web interface and manual correction features.
 
+🎥 [Watch the demo on YouTube](https://www.youtube.com/watch?v=aWHe7E47JcM&list=PLQ7eFSb8ydayAsLAkGa-kngCPJ0qU2niU&index=1) 
+
+
 Access the Web Interface： http://localhost:7860 (Ensure your environment is properly configured by following the setup guidelines in the **Installation** section.)
 
 ## Features ✨
